@@ -14,7 +14,7 @@
 
       <form action="/" id="form" class="form" method="POST">
         <select name="type" class="form-select">
-          <option value="random" data-display="Select">Random type</option>
+          <option value="" data-display="Select">Random type</option>
           <option value="education">Education</option>
           <option value="charity">Charity</option>
           <option value="recreational">Recreational</option>
@@ -25,7 +25,7 @@
           <option value="music">Music</option>
         </select>
         <select name="participants" class="form-select">
-          <option value="random">Any number of people</option>
+          <option value="">Any number of people</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -34,6 +34,7 @@
         <button type="submit" class="form-submit">Go</button>
       </form>
       <section id="cards" class="cards">
+        <% if (locals.data) { %>
         <article class="card-item">
           <h2 class="card-activity">
             <!-- Show Activity -->
@@ -51,10 +52,12 @@
             </span>
           </div>
         </article>
-
-        <!-- <div id="tag-error" class="tag-error"> -->
-        <!-- Show any errors that were sent from the backend -->
-        <!-- </div> -->
+        <% } else if(error){ %>
+        <div id="tag-error" class="tag-error">
+          <!-- Show any errors that were sent from the backend -->
+          <%= error %>
+        </div>
+        <% } %>
       </section>
     </div>
   </body>
